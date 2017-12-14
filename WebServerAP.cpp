@@ -19,7 +19,7 @@ void WebServerAPClass::Init()
 	Serial1.print("Setting soft-AP ... ");
 	Serial1.println(WiFi.softAP(ssid, password) ? "Ready" : "Failed!");
 
-	bind_member<WebServerAPClass, &WebServerAPClass::HandleRoot> handleRoot(this);
+	std::function<void()> handleRoot = std::bind(&WebServerAPClass::HandleRoot, this);
 
 	IPAddress myIP = WiFi.softAPIP();
 	Serial1.print("AP IP address: ");

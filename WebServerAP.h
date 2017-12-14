@@ -5,7 +5,7 @@
 
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
-#include <SimpleBinders.h>
+#include <functional>
 
 extern "C" {
 #include "user_interface.h"
