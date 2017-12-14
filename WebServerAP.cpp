@@ -47,10 +47,12 @@ void WebServerAPClass::OnNewStation(WiFiEventSoftAPModeStationConnected sta_info
 
 void WebServerAPClass::HandleRoot()
 {
+	Serial.println("Processing root");
 	server->send(200, "text/html", "<h1>You are connected</h1>");
 }
 
 void WebServerAPClass::HandleChess()
 {
+	Serial.println("Processing Chess page");
 	server->send(200, "text/html", "<h1>Check Mate!</h1>");
 }
