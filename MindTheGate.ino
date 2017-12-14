@@ -4,8 +4,8 @@ WebServerAPClass webServerAP;
 
 void setup() {
 	delay(1000);
-	Serial1.begin(115200);
-	Serial1.println();
+	Serial.begin(115200);
+	Serial.println();
 
 	webServerAP.Init();
 }

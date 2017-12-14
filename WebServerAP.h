@@ -7,6 +7,8 @@
 #include <ESP8266WebServer.h>
 #include <functional>
 
+using namespace std::placeholders;
+
 extern "C" {
 #include "user_interface.h"
 }
@@ -14,11 +16,18 @@ extern "C" {
 class WebServerAPClass
 {
 private:
-	const char *ssid = "ESPchess";
+	const char *ssid = "ESPap";
 	const char *password = "thereisnospoon";
+
 	ESP8266WebServer * server;
 	WiFiEventHandler e1;
+	std::function<void(WiFiEventSoftAPModeStationConnected)> onNewStation;
+	void OnNewStation(WiFiEventSoftAPModeStationConnected sta_info);
+
+	std::function<void(void)> handleRoot;
 	void HandleRoot();
+	std::function<void(void)> handleChess;
+	void HandleChess();
 
 public:
 	void Init();
